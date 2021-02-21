@@ -20,7 +20,7 @@ class HomePage extends Component {
             .then((res) => this.setState({ countries: res.data }))
             .catch((err) => console.log(err))
 
-        if (window.location.pathname === "/app" || window.location.pathname === "/app/") {
+        if (window.location.pathname === "/") {
             Axios
                 .get(`${baseUrl}/api/data/all-countries`)
                 .then((res) => {

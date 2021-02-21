@@ -1,4 +1,4 @@
 const baseUrl = process.env.PUBLIC_URL;
-// const baseUrl = 'http://localhost:8080/app';
+// const baseUrl = 'http://localhost:8080';
 
 export default baseUrl;
