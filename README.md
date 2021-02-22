@@ -22,30 +22,24 @@
 * [Swagger](https://swagger.io/)
 * [git](https://git-scm.com/)
 * [Docker](https://www.docker.com/)
-
-## Project structure
-Project is based on layered architecture pattern. 
-* Controller - API endpoints
-* Repository - Data access layer.
-* Service - Bussines logic layer.
-* Domain - DATA layer.
+* [Chart.js](https://www.chartjs.org/docs/latest/) & [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2)
 
 ## Running application
 ### Running the application with Maven
 Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins.html#build-tool-plugins-maven-plugin) like so:
-`
+```shell
 $ git clone https://github.com/Lamista/covid-19.git
 $ cd covid-19/app
 $ mvn spring-boot:run
-`
+```
 ### Running the application with Executable JAR
 The code can also be built into a jar and then executed/run. Once the jar is built, run the jar by double clicking on it or by using the command
-`
+```shell
 $ git clone https://github.com/Lamista/covid-19.git
 $ cd covid-19/app
 $ mvn package -DskipTests
 $ java -jar target/app.jar --spring.profiles.active=test
-`
+```
 To shutdown the jar, follow the below mentioned steps on a Windows machine.
 * In command prompt execute the jcmd command to print a list of all running Java processes
 * `Taskkill /PID PROCESS_ID_OF_RUNNING_APP /F` execute this command by replacing the PROCESS_ID_OF_RUNNING_APP with the actual process id of the running jar found out from executing the previous command
@@ -55,14 +49,14 @@ To shutdown the jar, follow the below mentioned steps on a Windows machine.
 * JDBC URL: jdbc:h2:mem:app
 * User Name: sa
 * Password:
-![H2-login](H2-login.PNG)
+![H2-login](readme/H2-login.PNG)
 ### Running the application via docker container
-`
+```shell
 $ git clone https://github.com/Lamista/covid-19.git
 $ cd covid-19/app
 $ docker build -t app .
 $ docker run -dp 8080:8080 app
-`
+```
 ### Swagger
 [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
 * GET list of country name - "/api/data/countries", request URL [http://localhost:8080/api/data/countries](http://localhost:8080/api/data/countries)
