@@ -48,10 +48,8 @@ To shutdown the jar, follow the below mentioned steps on a Windows machine.
 [http://localhost:8080/console](http://localhost:8080/console)
 * JDBC URL: jdbc:h2:mem:app
 * User Name: sa
-* Password:
-```
+* Password:  
 ![H2-login](readme/H2-login.PNG)
-```
 ### Running the application via docker container
 ```shell
 $ git clone https://github.com/Lamista/covid-19.git
