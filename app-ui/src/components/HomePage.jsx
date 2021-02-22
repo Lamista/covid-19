@@ -29,7 +29,7 @@ class HomePage extends Component {
                 .catch((err) => console.log(err))
         } else {
             Axios
-                .get(`${baseUrl}/api/data/${(window.location.pathname).split("/")[2]}`)
+                .get(`${baseUrl}/api/data${(window.location.pathname)}`)
                 .then((res) => {
                     this.setState({ chartData: res.data })
                 })
