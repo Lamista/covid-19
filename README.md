@@ -1,6 +1,6 @@
 # Covid-19 statistics
 
-## Examples
+## Application screenshots
 * All countries
 ![Main Page - statistics of all countries](readme/Main.PNG)
 * One country
@@ -8,43 +8,62 @@
 * Information on hover
 ![Information on point hover](readme/Turkey.PNG)
 
-## Tools
-
-* Backend - [Spring Boot](https://spring.io/projects/spring-boot)
+## Technology stack & other Open-source libraries
+### Data
+* [H2](https://www.h2database.com/html/main.html) - Java SQL database
+### Frontend
+* [React](https://reactjs.org/)
+* [Bootstrap4](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+### Backend
 * [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-* Frontend - [React](https://reactjs.org/)
-* Database - [H2](https://www.h2database.com/html/main.html) SQL database
-* Additional: [Swagger](https://swagger.io/), [Maven](https://maven.apache.org/)
+* [Spring Boot](https://spring.io/projects/spring-boot)
+* [Maven](https://maven.apache.org/)
+### Others
+* [Swagger](https://swagger.io/)
+* [git](https://git-scm.com/)
+* [Docker](https://www.docker.com/)
+* [Chart.js](https://www.chartjs.org/docs/latest/) & [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2)
 
-## Project structure
-Project is based on layered architecture pattern. 
-* Controller - API endpoints
-* Repository - Data access layer.
-* Service - Bussines logic layer.
-* Domain - DATA layer.
-
-## Embedded Tomcat
-To run app from war file
+## Running application
+### Running the application with Maven
+Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins.html#build-tool-plugins-maven-plugin) like so:
+```shell
+$ git clone https://github.com/Lamista/covid-19.git
+$ cd covid-19/app
+$ mvn spring-boot:run
 ```
-mvn clean install org.codehaus.cargo:cargo-maven2-plugin:1.7.7:run -Dcargo.maven.containerId=tomcat9x -Dcargo.servlet.port=8080 -Dcargo.maven.containerUrl=https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/9.0.40/tomcat-9.0.40.zip
-
+### Running the application with Executable JAR
+The code can also be built into a jar and then executed/run. Once the jar is built, run the jar by double clicking on it or by using the command
+```shell
+$ git clone https://github.com/Lamista/covid-19.git
+$ cd covid-19/app
+$ mvn package -DskipTests
+$ java -jar target/app.jar --spring.profiles.active=test
 ```
-Or run `mvn clean install` to make a war file (app.war) in target folder and deploy it to Tomcat server.
-### Application
-[http://localhost:8080/app](http://localhost:8080/app)
+To shutdown the jar, follow the below mentioned steps on a Windows machine.
+* In command prompt execute the jcmd command to print a list of all running Java processes
+* `Taskkill /PID PROCESS_ID_OF_RUNNING_APP /F` execute this command by replacing the PROCESS_ID_OF_RUNNING_APP with the actual process id of the running jar found out from executing the previous command
+
+### Accessing Data in H2 Database
+[http://localhost:8080/console](http://localhost:8080/console)
+* JDBC URL: jdbc:h2:mem:app
+* User Name: sa
+* Password:  
+![H2-login](readme/H2-login.PNG)
+### Running the application via docker container
+```shell
+$ git clone https://github.com/Lamista/covid-19.git
+$ cd covid-19/app
+$ docker build -t app .
+$ docker run -dp 8080:8080 app
+```
 ### Swagger
-[http://localhost:8080/app/swagger-ui/](http://localhost:8080/app/swagger-ui/)
-* GET list of country name - "/api/data/countries", request URL [http://localhost:8080/app/api/data/countries](http://localhost:8080/app/api/data/countries)
-* GET lists of weeks while collecting data, number of cases and deaths of one country - "/api/data/{country}", request URL for Russia [http://localhost:8080/app/api/data/Russia](http://localhost:8080/app/api/data/Russia)
-* GET lists of weeks while collecting data, number of cases and deaths of all countries - "/api/data/all-countries", request URL [http://localhost:8080/app/api/data/all-countries](http://localhost:8080/app/api/data/all-countries)
-* GET all data - "/api/data/all", request URL [http://localhost:8080/app/api/data/all](http://localhost:8080/app/api/data/all)
-### H2
-[http://localhost:8080/app/console](http://localhost:8080/app/console)
-```
-datasource url: jdbc:h2:mem:app
-username: sa
-password:
-```
+[http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+* GET list of country name - "/api/data/countries", request URL [http://localhost:8080/api/data/countries](http://localhost:8080/api/data/countries)
+* GET lists of weeks while collecting data, number of cases and deaths of one country - "/api/data/{country}", request URL for Russia [http://localhost:8080/api/data/Russia](http://localhost:8080/api/data/Russia)
+* GET lists of weeks while collecting data, number of cases and deaths of all countries - "/api/data/all-countries", request URL [http://localhost:8080/api/data/all-countries](http://localhost:8080/api/data/all-countries)
+* GET all data - "/api/data/all", request URL [http://localhost:8080/api/data/all](http://localhost:8080/api/data/all)
+
 
 ## Copyright
 &copy;LauraStasiule
