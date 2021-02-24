@@ -64,6 +64,9 @@ $ docker run -dp 8080:8080 app
 * GET lists of weeks while collecting data, number of cases and deaths of all countries - "/api/data/all-countries", request URL [http://localhost:8080/api/data/all-countries](http://localhost:8080/api/data/all-countries)
 * GET all data - "/api/data/all", request URL [http://localhost:8080/api/data/all](http://localhost:8080/api/data/all)
 
+## Data source
+Endpoint: [https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/](https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/)  
+more information here: [https://www.ecdc.europa.eu/en/publications-data/data-national-14-day-notification-rate-covid-19](https://www.ecdc.europa.eu/en/publications-data/data-national-14-day-notification-rate-covid-19)
 
 ## Copyright
 &copy;LauraStasiule
